@@ -274,3 +274,12 @@ Traceback (most recent call last):
   File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 216, in _execute_order
     raise BinanceAPIError(message=msg, code=exc.status_code) from exc
 bot.exceptions.BinanceAPIError: [Binance #401] Invalid API-key, IP, or permissions for action
+2026-06-11 01:27:15 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-11 01:37:36 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-11 01:37:36 | INFO     | validators      | Validation passed — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2026-06-11 01:37:36 | DEBUG    | client          | API credentials loaded successfully.
+2026-06-11 01:37:36 | INFO     | client          | Binance Futures client created. Mode: TESTNET, Base URL: https://testnet.binancefuture.com
+2026-06-11 01:37:36 | INFO     | orders          | Placing order — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop=None
+2026-06-11 01:37:36 | INFO     | client          | Sending MARKET order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-06-11 01:37:37 | INFO     | client          | Binance response: {'orderId': 14663616913, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJe084f2bc28692369b5419d', 'price': '0.00', 'origQty': '0.0010', 'executedQty': '0.0000', 'cumQty': '0.0000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1781122059687}
+2026-06-11 01:37:37 | INFO     | orders          | Order confirmed — id=14663616913 status=NEW exec_qty=0.0000 avg_price=0.00
