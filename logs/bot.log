@@ -1,0 +1,276 @@
+2026-06-10 22:54:42 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 22:54:58 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 22:55:31 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 22:55:31 | WARNING  | validators      | Validation failed — Side must be one of ['BUY', 'SELL'], got: 'SHORT'
+2026-06-10 22:55:31 | WARNING  | cli             | CLI validation failed: Side must be one of ['BUY', 'SELL'], got: 'SHORT'
+2026-06-10 22:56:00 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 22:56:00 | WARNING  | validators      | Validation failed — Price is required for this order type.
+2026-06-10 22:56:00 | WARNING  | cli             | CLI validation failed: Price is required for this order type.
+2026-06-10 22:59:52 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 22:59:52 | INFO     | validators      | Validation passed — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2026-06-10 22:59:52 | DEBUG    | client          | API credentials loaded successfully.
+2026-06-10 22:59:53 | INFO     | client          | Binance Futures Testnet client created. Base URL: https://testnet.binancefuture.com
+2026-06-10 22:59:53 | INFO     | orders          | Placing order — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop=None
+2026-06-10 22:59:53 | INFO     | client          | Sending MARKET order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-06-10 22:59:53 | ERROR    | client          | BinanceAPIException [401]: API-key format invalid.
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 212, in _execute_order
+    response: dict[str, Any] = self._client.futures_create_order(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\.venv\Lib\site-packages\binance\client.py", line 7948, in futures_create_order
+    return self._request_futures_api("post", "order", True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\.venv\Lib\site-packages\binance\client.py", line 148, in _request_futures_api
+    return self._request(method, uri, signed, force_params, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\.venv\Lib\site-packages\binance\client.py", line 111, in _request
+    return self._handle_response(self.response)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\.venv\Lib\site-packages\binance\client.py", line 120, in _handle_response
+    raise BinanceAPIException(response, response.status_code, response.text)
+binance.exceptions.BinanceAPIException: APIError(code=-2014): API-key format invalid.
+2026-06-10 22:59:53 | ERROR    | cli             | Order failed: [Binance #401] API-key format invalid.
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 212, in _execute_order
+    response: dict[str, Any] = self._client.futures_create_order(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\.venv\Lib\site-packages\binance\client.py", line 7948, in futures_create_order
+    return self._request_futures_api("post", "order", True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\.venv\Lib\site-packages\binance\client.py", line 148, in _request_futures_api
+    return self._request(method, uri, signed, force_params, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\.venv\Lib\site-packages\binance\client.py", line 111, in _request
+    return self._handle_response(self.response)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\.venv\Lib\site-packages\binance\client.py", line 120, in _handle_response
+    raise BinanceAPIException(response, response.status_code, response.text)
+binance.exceptions.BinanceAPIException: APIError(code=-2014): API-key format invalid.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\cli.py", line 247, in main
+    response: OrderResponse = place_order(params)
+                              ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\orders.py", line 104, in place_order
+    raw: dict[str, Any] = client.place_futures_order(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        symbol=params.symbol,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        stop_price=params.stop_price,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 191, in place_futures_order
+    return self._execute_order(params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 221, in _execute_order
+    raise BinanceAPIError(message=msg, code=exc.status_code) from exc
+bot.exceptions.BinanceAPIError: [Binance #401] API-key format invalid.
+2026-06-10 23:28:46 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 23:28:46 | INFO     | validators      | Validation passed — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2026-06-10 23:28:46 | DEBUG    | client          | API credentials loaded successfully.
+2026-06-10 23:28:46 | INFO     | client          | Binance Futures Testnet client created. Base URL: https://testnet.binancefuture.com
+2026-06-10 23:28:46 | INFO     | orders          | Placing order — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop=None
+2026-06-10 23:28:46 | INFO     | client          | Sending MARKET order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-06-10 23:28:47 | ERROR    | client          | BinanceAPIException [401]: Invalid API-key, IP, or permissions for action
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 216, in _execute_order
+    response: dict[str, Any] = self._client.futures_create_order(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 7948, in futures_create_order
+    return self._request_futures_api("post", "order", True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 148, in _request_futures_api
+    return self._request(method, uri, signed, force_params, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 111, in _request
+    return self._handle_response(self.response)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 120, in _handle_response
+    raise BinanceAPIException(response, response.status_code, response.text)
+binance.exceptions.BinanceAPIException: APIError(code=-2015): Invalid API-key, IP, or permissions for action
+2026-06-10 23:28:47 | ERROR    | cli             | Order failed: [Binance #401] Invalid API-key, IP, or permissions for action
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 216, in _execute_order
+    response: dict[str, Any] = self._client.futures_create_order(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 7948, in futures_create_order
+    return self._request_futures_api("post", "order", True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 148, in _request_futures_api
+    return self._request(method, uri, signed, force_params, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 111, in _request
+    return self._handle_response(self.response)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 120, in _handle_response
+    raise BinanceAPIException(response, response.status_code, response.text)
+binance.exceptions.BinanceAPIException: APIError(code=-2015): Invalid API-key, IP, or permissions for action
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\cli.py", line 247, in main
+    response: OrderResponse = place_order(params)
+                              ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\orders.py", line 104, in place_order
+    raw: dict[str, Any] = client.place_futures_order(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        symbol=params.symbol,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        stop_price=params.stop_price,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 195, in place_futures_order
+    return self._execute_order(params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 225, in _execute_order
+    raise BinanceAPIError(message=msg, code=exc.status_code) from exc
+bot.exceptions.BinanceAPIError: [Binance #401] Invalid API-key, IP, or permissions for action
+2026-06-10 23:45:11 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 23:45:11 | INFO     | validators      | Validation passed — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2026-06-10 23:45:11 | DEBUG    | client          | API credentials loaded successfully.
+2026-06-10 23:45:11 | INFO     | client          | Binance Futures client created. Mode: LIVE, Base URL: https://fapi.binance.com
+2026-06-10 23:45:11 | INFO     | orders          | Placing order — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop=None
+2026-06-10 23:45:11 | INFO     | client          | Sending MARKET order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-06-10 23:45:12 | ERROR    | client          | BinanceAPIException [400]: Margin is insufficient.
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 207, in _execute_order
+    response: dict[str, Any] = self._client.futures_create_order(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 7948, in futures_create_order
+    return self._request_futures_api("post", "order", True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 148, in _request_futures_api
+    return self._request(method, uri, signed, force_params, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 111, in _request
+    return self._handle_response(self.response)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 120, in _handle_response
+    raise BinanceAPIException(response, response.status_code, response.text)
+binance.exceptions.BinanceAPIException: APIError(code=-2019): Margin is insufficient.
+2026-06-10 23:45:12 | ERROR    | cli             | Order failed: [Binance #400] Margin is insufficient.
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 207, in _execute_order
+    response: dict[str, Any] = self._client.futures_create_order(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 7948, in futures_create_order
+    return self._request_futures_api("post", "order", True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 148, in _request_futures_api
+    return self._request(method, uri, signed, force_params, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 111, in _request
+    return self._handle_response(self.response)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 120, in _handle_response
+    raise BinanceAPIException(response, response.status_code, response.text)
+binance.exceptions.BinanceAPIException: APIError(code=-2019): Margin is insufficient.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\cli.py", line 247, in main
+    response: OrderResponse = place_order(params)
+                              ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\orders.py", line 104, in place_order
+    raw: dict[str, Any] = client.place_futures_order(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        symbol=params.symbol,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        stop_price=params.stop_price,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 186, in place_futures_order
+    return self._execute_order(params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 216, in _execute_order
+    raise BinanceAPIError(message=msg, code=exc.status_code) from exc
+bot.exceptions.BinanceAPIError: [Binance #400] Margin is insufficient.
+2026-06-10 23:51:37 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 23:51:37 | INFO     | validators      | Validation passed — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2026-06-10 23:51:37 | DEBUG    | client          | API credentials loaded successfully.
+2026-06-10 23:51:38 | INFO     | client          | Binance Futures client created. Mode: TESTNET, Base URL: https://testnet.binancefuture.com
+2026-06-10 23:51:38 | INFO     | orders          | Placing order — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop=None
+2026-06-10 23:51:38 | INFO     | client          | Sending MARKET order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-06-10 23:51:38 | INFO     | client          | Binance response: {'orderId': 14658444672, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJd5e94655f2938d994072c6', 'price': '0.00', 'origQty': '0.0010', 'executedQty': '0.0000', 'cumQty': '0.0000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1781115701014}
+2026-06-10 23:51:38 | INFO     | orders          | Order confirmed — id=14658444672 status=NEW exec_qty=0.0000 avg_price=0.00
+2026-06-10 23:51:48 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 23:51:48 | INFO     | validators      | Validation passed — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2026-06-10 23:51:48 | DEBUG    | client          | API credentials loaded successfully.
+2026-06-10 23:51:48 | INFO     | client          | Binance Futures client created. Mode: TESTNET, Base URL: https://testnet.binancefuture.com
+2026-06-10 23:51:48 | INFO     | orders          | Placing order — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop=None
+2026-06-10 23:51:48 | INFO     | client          | Sending MARKET order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-06-10 23:51:49 | INFO     | client          | Binance response: {'orderId': 14658457264, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJ343d29e41801a186ab7ae5', 'price': '0.00', 'origQty': '0.0010', 'executedQty': '0.0000', 'cumQty': '0.0000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1781115711673}
+2026-06-10 23:51:49 | INFO     | orders          | Order confirmed — id=14658457264 status=NEW exec_qty=0.0000 avg_price=0.00
+2026-06-10 23:53:29 | INFO     | logging_config  | Logging initialised — file: C:\Users\manoh\Downloads\python\trading_bot\logs\bot.log
+2026-06-10 23:53:29 | INFO     | validators      | Validation passed — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2026-06-10 23:53:29 | DEBUG    | client          | API credentials loaded successfully.
+2026-06-10 23:53:30 | INFO     | client          | Binance Futures client created. Mode: LIVE, Base URL: https://fapi.binance.com
+2026-06-10 23:53:30 | INFO     | orders          | Placing order — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop=None
+2026-06-10 23:53:30 | INFO     | client          | Sending MARKET order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-06-10 23:53:30 | ERROR    | client          | BinanceAPIException [401]: Invalid API-key, IP, or permissions for action
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 207, in _execute_order
+    response: dict[str, Any] = self._client.futures_create_order(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 7948, in futures_create_order
+    return self._request_futures_api("post", "order", True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 148, in _request_futures_api
+    return self._request(method, uri, signed, force_params, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 111, in _request
+    return self._handle_response(self.response)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 120, in _handle_response
+    raise BinanceAPIException(response, response.status_code, response.text)
+binance.exceptions.BinanceAPIException: APIError(code=-2015): Invalid API-key, IP, or permissions for action
+2026-06-10 23:53:30 | ERROR    | cli             | Order failed: [Binance #401] Invalid API-key, IP, or permissions for action
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 207, in _execute_order
+    response: dict[str, Any] = self._client.futures_create_order(**params)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 7948, in futures_create_order
+    return self._request_futures_api("post", "order", True, data=params)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 148, in _request_futures_api
+    return self._request(method, uri, signed, force_params, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 111, in _request
+    return self._handle_response(self.response)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\manoh\AppData\Local\Programs\Python\Python313\Lib\site-packages\binance\client.py", line 120, in _handle_response
+    raise BinanceAPIException(response, response.status_code, response.text)
+binance.exceptions.BinanceAPIException: APIError(code=-2015): Invalid API-key, IP, or permissions for action
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\manoh\Downloads\python\trading_bot\cli.py", line 247, in main
+    response: OrderResponse = place_order(params)
+                              ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\orders.py", line 104, in place_order
+    raw: dict[str, Any] = client.place_futures_order(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        symbol=params.symbol,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        stop_price=params.stop_price,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 186, in place_futures_order
+    return self._execute_order(params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\manoh\Downloads\python\trading_bot\bot\client.py", line 216, in _execute_order
+    raise BinanceAPIError(message=msg, code=exc.status_code) from exc
+bot.exceptions.BinanceAPIError: [Binance #401] Invalid API-key, IP, or permissions for action

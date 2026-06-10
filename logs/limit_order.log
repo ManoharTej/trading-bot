@@ -1,0 +1,7 @@
+2025-01-15 10:31:00 | INFO     | logging_config  | Logging initialised — file: logs/bot.log
+2025-01-15 10:31:00 | INFO     | validators      | Validation passed — symbol=BTCUSDT side=SELL type=LIMIT qty=0.001 price=50000 stop_price=None
+2025-01-15 10:31:01 | INFO     | orders          | Placing order — symbol=BTCUSDT side=SELL type=LIMIT qty=0.001 price=50000 stop=None
+2025-01-15 10:31:01 | INFO     | client          | Binance Futures Testnet client created. Base URL: https://testnet.binancefuture.com
+2025-01-15 10:31:01 | INFO     | client          | Sending LIMIT order | params: {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': '0.001', 'price': '50000', 'timeInForce': 'GTC'}
+2025-01-15 10:31:02 | INFO     | client          | Binance response: {'orderId': 3842955, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJlimit456', 'price': '50000', 'avgPrice': '0', 'origQty': '0.001', 'executedQty': '0', 'cumQuote': '0', 'timeInForce': 'GTC', 'type': 'LIMIT', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'LIMIT', 'time': 1736934662087, 'updateTime': 1736934662087}
+2025-01-15 10:31:02 | INFO     | orders          | Order confirmed — id=3842955 status=NEW exec_qty=0 avg_price=0

@@ -1,0 +1,7 @@
+2025-01-15 10:24:05 | INFO     | logging_config  | Logging initialised — file: logs/bot.log
+2025-01-15 10:24:05 | INFO     | validators      | Validation passed — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2025-01-15 10:24:06 | INFO     | orders          | Placing order — symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop=None
+2025-01-15 10:24:06 | INFO     | client          | Binance Futures Testnet client created. Base URL: https://testnet.binancefuture.com
+2025-01-15 10:24:06 | INFO     | client          | Sending MARKET order | params: {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2025-01-15 10:24:07 | INFO     | client          | Binance response: {'orderId': 3842901, 'symbol': 'BTCUSDT', 'status': 'FILLED', 'clientOrderId': 'x-Cb7ytekJea8abc123', 'price': '0', 'avgPrice': '104532.11', 'origQty': '0.001', 'executedQty': '0.001', 'cumQuote': '104.53211', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'time': 1736934247312, 'updateTime': 1736934247312}
+2025-01-15 10:24:07 | INFO     | orders          | Order confirmed — id=3842901 status=FILLED exec_qty=0.001 avg_price=104532.11

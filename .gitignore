@@ -1,0 +1,15 @@
+# Binance Futures Testnet Trading Bot
+.env
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+dist/
+build/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+htmlcov/
+.coverage
