@@ -70,6 +70,35 @@ Default exchange interfaces are often cluttered, slow, and overly rigid, making 
 - **Exchange Integration**: `python-binance`.
 - **Security**: Environment-driven credential management (`python-dotenv`).
 
+## 🏗 Architecture
+
+The WebApp branch utilizes a strictly decoupled frontend/backend architecture to ensure the UI remains responsive even during high-latency network requests to Binance.
+
+```mermaid
+graph TD
+    User([Quantitative Trader]) -->|Web Browser| Vite[Vite Dev Server :5173]
+    Vite --> React[React 18 SPA]
+    
+    subgraph Frontend Client
+        React --> Router[React Router]
+        Router --> Dashboard[Dashboard View]
+        Router --> Orders[Order Entry Panel]
+        Dashboard --> TV[TradingView Widgets]
+    end
+
+    subgraph Backend Proxy
+        React -->|REST JSON| FastAPI[FastAPI :8000]
+        FastAPI --> Validator[Pydantic Models]
+        Validator --> Client[BinanceClient]
+    end
+
+    subgraph Execution Layer
+        Client -->|HMAC-SHA256| Binance[Binance Futures Testnet]
+        Binance -->|401 Unauthorized| Interceptor[Simulation Fallback]
+        Interceptor --> Client
+    end
+```
+
 ## 🚀 Installation & Running Locally
 
 ### Prerequisites
