@@ -1,46 +1,37 @@
-# TradeFlow Architecture
+# TradeFlow Web Architecture
 
-This document outlines the high-level system architecture and data flow for the TradeFlow Algorithmic Terminal.
+The WebApp branch contains a fully decoupled frontend/backend architecture designed for latency optimization and UI responsiveness.
 
-## High-Level System Design
-
-TradeFlow utilizes a decoupled client-server architecture to ensure security (API keys remain server-side) and performance (trading logic runs headless, untouched by UI rendering constraints).
+## System Diagram
 
 ```mermaid
 graph TD
-    %% User Layer
-    User[Trader / User] -->|HTTP / UI Interaction| UI[React Frontend UI]
+    User([Quantitative Trader]) -->|Web Browser| Vite[Vite Dev Server :5173]
+    Vite --> React[React 18 SPA]
     
-    %% Frontend Layer
-    subgraph Frontend [Client - Local Browser]
-        UI -->|Displays Charting| TV[TradingView Widget]
-        UI -->|Saves UI Preferences| LS[Local Storage]
-        UI -->|REST API Calls| APIClient[Axios / Fetch Client]
+    subgraph Frontend Client
+        React --> Router[React Router]
+        Router --> Dashboard[Dashboard View]
+        Router --> Orders[Order Entry Panel]
+        Dashboard --> TV[TradingView Widgets]
     end
-    
-    %% Backend Layer
-    subgraph Backend [Server - FastAPI]
-        APIClient -->|POST /api/order| APIServer[FastAPI Server]
-        APIServer -->|Env Config| DotEnv[.env Configuration]
-        APIServer -->|Instantiates| BotLogic[TradeFlow Bot Client]
+
+    subgraph Backend Proxy
+        React -->|REST JSON| FastAPI[FastAPI :8000]
+        FastAPI --> Validator[Pydantic Models]
+        Validator --> Client[BinanceClient]
     end
-    
-    %% External API Layer
-    subgraph External [External Services]
-        BotLogic -->|python-binance wrapper| Binance[Binance Futures API]
-        TV -->|Market Data| BinanceWS[Binance WebSocket]
+
+    subgraph Execution Layer
+        Client -->|HMAC-SHA256| Binance[Binance Futures Testnet]
+        Binance -->|401 Unauthorized| Interceptor[Simulation Fallback]
+        Interceptor --> Client
     end
-    
-    %% Fallback Logic
-    BotLogic -.->|401 Fallback| Mock[Local Simulator Fallback]
 ```
 
-## Data Flow: Placing an Order
+## Component Hierarchy
 
-1. **User Action**: The user configures order parameters (Symbol, Side, Type, Quantity) in the React UI (`NewOrder.tsx`).
-2. **REST Request**: The frontend fires a POST request to the local FastAPI server (`http://127.0.0.1:8000/api/order`).
-3. **Validation**: FastAPI parses and validates the payload using Pydantic models.
-4. **Execution**: The `BinanceClient` (`bot/client.py`) constructs the secure API request using the loaded `.env` credentials and transmits it to Binance.
-5. **Response Handling**: 
-   - *Success*: Binance returns the executed order ID and state, which propagates back to the UI.
-   - *Failure (401)*: The API intercepts the failure and routes to the **Simulation Fallback**, generating a mock order ID so UI testing is uninterrupted.
+- `App.tsx`: Context Providers (Theme, Settings) and Router.
+- `Dashboard.tsx`: Primary view containing charts and real-time logs.
+- `Layout.tsx`: Glassmorphic navigation shell.
+- `api.py`: Python FastAPI execution environment bridging the UI and Binance.
